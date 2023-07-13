@@ -7,6 +7,7 @@ var items = ["Buy Food", "Cook Food", "Eat Food"];
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 app.get("/", function (req, res) {
   var today = new Date();
@@ -28,6 +29,6 @@ app.post("/", function (req, res) {
   res.redirect("/");
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("Server is running on Port 3000.");
 });
